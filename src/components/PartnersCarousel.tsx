@@ -1,0 +1,240 @@
+import React, { useState } from 'react';
+import { PARTNERS_LIST, Partner } from '../data/clearcomData.ts';
+import { PartnerLogoSvg } from './PartnerLogosSvg.tsx';
+import { CheckCircle2, ExternalLink, X, Award, Pause, Play, Grid, Layers } from 'lucide-react';
+
+interface PartnersCarouselProps {
+  onSelectService?: (serviceId: string) => void;
+}
+
+export const PartnersCarousel: React.FC<PartnersCarouselProps> = ({ onSelectService }) => {
+  const [selectedPartner, setSelectedPartner] = useState<Partner | null>(null);
+  const [isPaused, setIsPaused] = useState<boolean>(false);
+  const [viewMode, setViewMode] = useState<'carousel' | 'grid'>('carousel');
+
+  const getRelevantServiceId = (partnerName: string): string => {
+    switch (partnerName) {
+      case '3CX':
+        return '3cx-phone-systems';
+      case 'Yeastar':
+      case 'Fanvil':
+        return 'yeastar-phone-systems';
+      case 'Sophos':
+      case 'Bitdefender':
+        return 'cybersecurity';
+      case 'Acronis':
+        return 'backup-recovery';
+      case 'Microsoft':
+        return 'cloud-microsoft-365';
+      case 'Ubiquiti':
+      case 'TP-Link':
+        return 'networking-wifi';
+      case 'Hikvision':
+        return 'cctv-security';
+      case 'Dell':
+      case 'HP':
+      case 'Lenovo':
+      case 'Logitech':
+        return 'hardware-procurement';
+      case 'Kaseya':
+      default:
+        return 'managed-it';
+    }
+  };
+
+  return (
+    <section id="partners" className="py-16 sm:py-20 bg-gradient-to-b from-white via-slate-50 to-white overflow-hidden border-y border-slate-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
+        {/* Section Tag */}
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/60 text-[#0B6BB5] text-xs font-semibold uppercase tracking-wider mb-4">
+          <Award className="w-3.5 h-3.5 text-[#F26B21]" />
+          Authorized Ecosystem & Certifications
+        </div>
+
+        {/* Heading: Blue with Orange Underline as shown in screenshot */}
+        <div className="inline-block relative">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B6BB5] font-['Poppins'] tracking-tight">
+            Professional Partners
+          </h2>
+          {/* Orange Accent Underline */}
+          <div className="mt-2.5 mx-auto h-1.5 w-28 sm:w-36 bg-[#F26B21] rounded-full shadow-xs" />
+        </div>
+
+        <p className="mt-4 text-slate-600 max-w-2xl mx-auto text-sm sm:text-base">
+          Direct certifications and alliances with the world's leading IT, telecom, security, and cloud vendors to guarantee genuine hardware, licensing, and local warranty across Kenya.
+        </p>
+
+        {/* Carousel Controls (Speed, Pause, Grid Toggle) */}
+        <div className="mt-6 flex items-center justify-center gap-3">
+          <button
+            onClick={() => setIsPaused(!isPaused)}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-200 hover:border-slate-300 shadow-2xs hover:bg-slate-50 transition-colors cursor-pointer"
+            title={isPaused ? "Resume auto-scrolling" : "Pause auto-scrolling to read"}
+          >
+            {isPaused ? <Play className="w-3.5 h-3.5 text-emerald-600" /> : <Pause className="w-3.5 h-3.5 text-amber-600" />}
+            <span>{isPaused ? 'Resume Scroll' : 'Pause Scroll'}</span>
+          </button>
+
+          <button
+            onClick={() => setViewMode(viewMode === 'carousel' ? 'grid' : 'carousel')}
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold border transition-colors cursor-pointer shadow-2xs ${
+              viewMode === 'grid'
+                ? 'bg-[#0B6BB5] text-white border-[#0B6BB5]'
+                : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
+            }`}
+          >
+            {viewMode === 'grid' ? <Layers className="w-3.5 h-3.5" /> : <Grid className="w-3.5 h-3.5" />}
+            <span>{viewMode === 'grid' ? 'Switch to Carousel' : 'View All 15 as Grid'}</span>
+          </button>
+        </div>
+      </div>
+
+      {viewMode === 'carousel' ? (
+        /* Slow, Readable Infinite Marquee */
+        <div className="relative w-full overflow-hidden py-4">
+          {/* Subtle gradient edge masks */}
+          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
+
+          {/* Marquee Track: Duplicated list for seamless looping, slower speed, full brand colors */}
+          <div
+            className={`animate-marquee flex items-center gap-6 sm:gap-8 px-4 ${
+              isPaused ? '[animation-play-state:paused]' : ''
+            }`}
+          >
+            {[...PARTNERS_LIST, ...PARTNERS_LIST].map((partner, index) => (
+              <button
+                key={`${partner.name}-${index}`}
+                onClick={() => setSelectedPartner(partner)}
+                type="button"
+                className="group flex-shrink-0 bg-white rounded-2xl border border-slate-200/90 hover:border-[#0B6BB5] shadow-xs hover:shadow-xl transition-all duration-300 px-6 py-4 flex items-center gap-4 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#0B6BB5] hover:-translate-y-0.5"
+                title={`Click to view ${partner.name} partnership details`}
+              >
+                {/* Partner Logo in FULL VIBRANT BRAND COLORS as in the screenshot */}
+                <div className="flex items-center justify-center min-w-[130px] sm:min-w-[150px] h-11 px-2 group-hover:scale-105 transition-transform duration-200">
+                  <PartnerLogoSvg name={partner.name} />
+                </div>
+
+                <div className="hidden sm:block border-l border-slate-200 pl-4 py-0.5">
+                  <span className="block text-[11px] font-bold text-[#0B6BB5] uppercase tracking-wide group-hover:text-[#F26B21] transition-colors">
+                    {partner.tier}
+                  </span>
+                  <span className="block text-xs text-slate-500 font-medium">
+                    {partner.category}
+                  </span>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+      ) : (
+        /* Static Grid View displaying all 15 partners in their exact brand colors */
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {PARTNERS_LIST.map((partner) => (
+              <button
+                key={partner.name}
+                onClick={() => setSelectedPartner(partner)}
+                className="bg-white rounded-2xl p-5 border border-slate-200 hover:border-[#0B6BB5] shadow-xs hover:shadow-lg transition-all duration-200 flex flex-col items-center justify-center text-center group cursor-pointer"
+              >
+                <div className="h-12 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+                  <PartnerLogoSvg name={partner.name} />
+                </div>
+                <span className="text-xs font-bold text-[#08365F] group-hover:text-[#F26B21] transition-colors">
+                  {partner.name}
+                </span>
+                <span className="text-[10px] text-slate-500 font-medium mt-0.5">
+                  {partner.tier}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Category Pills Bar */}
+      <div className="max-w-6xl mx-auto px-4 mt-8">
+        <div className="flex flex-wrap items-center justify-center gap-2 text-xs">
+          <span className="text-slate-400 font-semibold mr-1">All Certified Domains:</span>
+          {['VoIP Phone Systems (3CX / Yeastar / Fanvil)', 'Endpoint & Cloud Security (Sophos / Bitdefender)', 'Enterprise Hardware (Dell / HP / Lenovo)', 'Productivity & Azure (Microsoft 365)', 'Enterprise Networking (Ubiquiti / TP-Link)', 'Smart Video Surveillance (Hikvision)'].map((tag, i) => (
+            <span key={i} className="px-3 py-1 rounded-full bg-slate-100/80 text-slate-700 border border-slate-200/60 font-medium">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Partner Spotlight Detail Modal */}
+      {selectedPartner && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in duration-200">
+          <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-100 relative">
+            <button
+              onClick={() => setSelectedPartner(null)}
+              className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-full transition-colors"
+              aria-label="Close dialog"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="flex items-center gap-4 mb-6">
+              <div className="p-3 bg-slate-50 border border-slate-200 rounded-2xl flex items-center justify-center">
+                <PartnerLogoSvg name={selectedPartner.name} className="h-10 max-w-[140px]" />
+              </div>
+              <div>
+                <span className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-blue-50 text-[#0B6BB5] mb-1">
+                  {selectedPartner.tier}
+                </span>
+                <h3 className="text-xl font-bold text-slate-900 font-['Poppins']">
+                  {selectedPartner.name}
+                </h3>
+              </div>
+            </div>
+
+            <p className="text-slate-600 mb-6 text-sm leading-relaxed">
+              {selectedPartner.description}. Clearcom Enterprises LTD maintains direct technical certifications and deployment partnerships with {selectedPartner.name} to guarantee official licensing, local warranty, and certified engineering support across Kenya.
+            </p>
+
+            <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 mb-6 space-y-2">
+              <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                <span>100% Genuine Manufacturer Licensing & Local Warranty</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                <span>Certified Engineers in Nairobi for Rapid Implementation</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                <span>24/7 Dedicated Monitoring & Level 2/3 Escalation</span>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center gap-3">
+              {onSelectService && (
+                <button
+                  onClick={() => {
+                    const sId = getRelevantServiceId(selectedPartner.name);
+                    setSelectedPartner(null);
+                    onSelectService(sId);
+                  }}
+                  className="w-full sm:flex-1 inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#0B6BB5] hover:bg-[#08548F] text-white rounded-xl font-semibold text-sm transition-all shadow-md hover:shadow-lg"
+                >
+                  <span>Explore Related Service</span>
+                  <ExternalLink className="w-4 h-4" />
+                </button>
+              )}
+              <button
+                onClick={() => setSelectedPartner(null)}
+                className="w-full sm:w-auto px-5 py-2.5 text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-xl font-medium text-sm transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+};
+
+export default PartnersCarousel;
