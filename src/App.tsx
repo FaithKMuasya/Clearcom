@@ -19,7 +19,7 @@ import { CookieBanner } from './components/CookieBanner.tsx';
 import { ServiceDetailModal } from './components/ServiceDetailModal.tsx';
 import { LegalModal } from './components/LegalModals.tsx';
 import { ConsultationModal } from './components/ConsultationModal.tsx';
-import { SERVICES_LIST, ServiceDetail } from './data/clearcomData.ts';
+import { SERVICES_LIST, ServiceDetail, FAQS } from './data/clearcomData.ts';
 
 export function App() {
   const [activeSection, setActiveSection] = useState<string>('home');
@@ -28,6 +28,31 @@ export function App() {
   const [prefilledNotes, setPrefilledNotes] = useState<string>('');
   const [legalModalType, setLegalModalType] = useState<'privacy' | 'terms' | null>(null);
   const [isConsultationModalOpen, setIsConsultationModalOpen] = useState<boolean>(false);
+
+  // FAQ structured data generated from the same FAQS data the page renders,
+  // so the JSON-LD always matches the visible content (Google FAQ rich results requirement)
+  useEffect(() => {
+    const faqSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: FAQS.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    };
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'faq-page-jsonld';
+    script.textContent = JSON.stringify(faqSchema);
+    document.head.appendChild(script);
+    return () => {
+      script.remove();
+    };
+  }, []);
 
   // Smooth scroll handler
   const handleNavigate = (sectionId: string, serviceSlug?: string) => {

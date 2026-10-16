@@ -22,7 +22,7 @@ export const ServiceCostCalculator: React.FC<ServiceCostCalculatorProps> = ({ on
   const estimatedMonthlyKES = (users * (baseSupportPerUser + phoneCostPerUser + securityAddonPerUser + cloudAddonPerUser)) + backupAddon;
   const estimatedUSD = Math.round(estimatedMonthlyKES / 130);
 
-  const handleApplyQuote = () => {
+  const handleApplyQuote = () => { 
     const summary = `Managed IT Plan Estimate for ${users} Users: Telephony: ${
       phoneType === '3cx' ? '3CX Cloud VoIP' : phoneType === 'yeastar' ? 'Yeastar + Fanvil PBX' : 'None'
     }, Security: ${securityTier === 'advanced' ? 'Sophos Intercept X Advanced XDR' : 'Standard Bitdefender'}, Microsoft 365: ${

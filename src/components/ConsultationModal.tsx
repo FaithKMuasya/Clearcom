@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Sparkles, CheckCircle2, Phone, Mail, Send, Calendar, MessageSquare, Copy, Check } from 'lucide-react';
+import { X, Sparkles, CheckCircle2, Phone, Mail, Send, Calendar, MessageSquare, Copy, Check, AlertCircle } from 'lucide-react';
 import { COMPANY_INFO, SERVICES_LIST } from '../data/clearcomData.ts';
 import confetti from 'canvas-confetti';
 
@@ -22,6 +22,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   const [ticketId, setTicketId] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   if (!isOpen) return null;
 
@@ -30,36 +31,60 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
     if (!name || !email || !phone) return;
 
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 750));
+    setSubmitError(null);
 
-    const id = `CLR-AUDIT-${Math.floor(1000 + Math.random() * 9000)}`;
-    setTicketId(id);
-
-    // Save to localStorage
     try {
-      const stored = JSON.parse(localStorage.getItem('clearcom_inquiries') || '[]');
-      stored.unshift({
-        id,
-        timestamp: new Date().toLocaleString('en-KE'),
-        name,
-        company: 'Fast Consultation Booking',
-        email,
-        phone,
-        service,
-        message: `Requested Timeframe: ${datePref}`,
-        status: 'Audit Scheduled - Contacting Client',
-      });
-      localStorage.setItem('clearcom_inquiries', JSON.stringify(stored.slice(0, 20)));
-    } catch (err) {
-      console.warn('Storage error', err);
-    }
+      const id = `CLR-AUDIT-${Math.floor(1000 + Math.random() * 9000)}`;
 
-    setIsSubmitting(false);
-    confetti({
-      particleCount: 75,
-      spread: 55,
-      colors: ['#F26B21', '#0B6BB5', '#10b981'],
-    });
+      // Deliver the booking by email via the local API server (server.js)
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'consultation',
+          ticket: id,
+          name,
+          email,
+          phone,
+          service,
+          datePref,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error(`delivery-failed-${response.status}`);
+      }
+
+      setTicketId(id);
+
+      // Save to localStorage
+      try {
+        const stored = JSON.parse(localStorage.getItem('clearcom_inquiries') || '[]');
+        stored.unshift({
+          id,
+          timestamp: new Date().toLocaleString('en-KE'),
+          name,
+          company: 'Fast Consultation Booking',
+          email,
+          phone,
+          service,
+          message: `Requested Timeframe: ${datePref}`,
+          status: 'Audit Scheduled - Contacting Client',
+        });
+        localStorage.setItem('clearcom_inquiries', JSON.stringify(stored.slice(0, 20)));
+      } catch (err) {
+        console.warn('Storage error', err);
+      }
+
+      confetti({
+        particleCount: 75,
+        spread: 55,
+        colors: ['#F26B21', '#0B6BB5', '#10b981'],
+      });
+    } catch {
+      setSubmitError('Unable to send your booking right now. Please call +254 795 768 010 or message us on WhatsApp.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const copyId = () => {
@@ -228,6 +253,13 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                     ))}
                   </div>
                 </div>
+
+                {submitError && (
+                  <div className="flex items-start gap-2 text-xs font-semibold text-red-600 bg-red-50 border border-red-200 rounded-xl px-3 py-2.5">
+                    <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                    <span>{submitError}</span>
+                  </div>
+                )}
 
                 <div className="pt-2">
                   <button

@@ -96,10 +96,29 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     setSubmitError(null);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 850));
-
       const randomSuffix = Math.floor(1000 + Math.random() * 9000);
       const ticketId = `CLR-2026-${randomSuffix}`;
+
+      // Deliver the inquiry by email via the local API server (server.js)
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'contact',
+          ticket: ticketId,
+          name: formData.name,
+          company: formData.company,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.message,
+          website: formData.honeypot,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error(`delivery-failed-${response.status}`);
+      }
+
       const nowStr = new Date().toLocaleString('en-KE', {
         dateStyle: 'medium',
         timeStyle: 'short',
