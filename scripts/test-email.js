@@ -5,12 +5,25 @@
 import 'dotenv/config';
 import nodemailer from 'nodemailer';
 
-const SMTP_HOST = process.env.SMTP_HOST || 'mail.clearcom.co.ke';
-const SMTP_PORT = Number(process.env.SMTP_PORT || 465);
-const SMTP_USER = process.env.SMTP_USER || 'info@clearcom.co.ke';
-const SMTP_PASS = process.env.SMTP_PASS || '';
+const requiredKeys = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS'];
+const missingKeys = requiredKeys.filter((key) => !process.env[key]);
+
+if (missingKeys.length) {
+  console.error(`Missing required environment variables: ${missingKeys.join(', ')}`);
+  process.exit(1);
+}
+
+const SMTP_HOST = process.env.SMTP_HOST;
+const SMTP_PORT = Number(process.env.SMTP_PORT);
+const SMTP_USER = process.env.SMTP_USER;
+const SMTP_PASS = process.env.SMTP_PASS;
 const MAIL_TO = process.env.MAIL_TO || SMTP_USER;
 const MAIL_FROM = process.env.MAIL_FROM || SMTP_USER;
+
+if (!Number.isInteger(SMTP_PORT) || SMTP_PORT < 1 || SMTP_PORT > 65535) {
+  console.error('SMTP_PORT must be a valid TCP port.');
+  process.exit(1);
+}
 
 const transporter = nodemailer.createTransport({
   host: SMTP_HOST,
@@ -38,7 +51,7 @@ try {
 } catch (err) {
   console.error(`FAILED: ${err.code || ''} ${err.message}`);
   if (/auth|credential|535|invalid/i.test(String(err.message)) || err.code === 'EAUTH') {
-    console.error('Hint: set the real mailbox password for info@clearcom.co.ke as SMTP_PASS in .env');
+    console.error('Hint: verify SMTP_USER and SMTP_PASS in .env.');
   }
   process.exit(1);
 }

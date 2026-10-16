@@ -65,7 +65,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </a>
             <div className="flex items-center gap-1.5 text-slate-300">
               <MapPin className="w-3.5 h-3.5 text-[#F26B21]" />
-              <span>Vision Plaza, Mombasa Rd, Nairobi</span>
+              <span>{COMPANY_INFO.addressShort}</span>
             </div>
           </div>
 

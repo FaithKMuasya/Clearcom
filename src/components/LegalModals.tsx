@@ -43,7 +43,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <>
               <h4 className="text-base font-bold text-slate-900 font-['Poppins']">1. Commitment to Kenya Data Protection Act (KDPA)</h4>
               <p>
-                CLEARCOM ENTERPRISES LTD, headquartered at Vision Plaza, Mombasa Road, 5th Floor, Suite 35, Nairobi, is dedicated to upholding the highest standards of data security and confidentiality in compliance with the Data Protection Act, 2019 of the Republic of Kenya.
+                {COMPANY_INFO.name}, headquartered at {COMPANY_INFO.address}, is dedicated to upholding the highest standards of data security and confidentiality in compliance with the Data Protection Act, 2019 of the Republic of Kenya.
               </p>
 
               <h4 className="text-base font-bold text-slate-900 font-['Poppins']">2. Information Collection</h4>
@@ -58,14 +58,14 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
 
               <h4 className="text-base font-bold text-slate-900 font-['Poppins']">4. Contact Our Data Protection Officer</h4>
               <p>
-                For data privacy requests or erasure inquiries, please email our security officer at <a href="mailto:info@clearcom.co.ke" className="text-[#0B6BB5] underline">info@clearcom.co.ke</a> or telephone +254 795 768 010.
+                For data privacy requests or erasure inquiries, please email our security officer at <a href={`mailto:${COMPANY_INFO.email}`} className="text-[#0B6BB5] underline">{COMPANY_INFO.email}</a> or telephone {COMPANY_INFO.phoneDisplay}.
               </p>
             </>
           ) : (
             <>
               <h4 className="text-base font-bold text-slate-900 font-['Poppins']">1. Service Scope & Managed IT Agreements</h4>
               <p>
-                All Managed IT Support, 3CX VoIP PBX, Yeastar installations, and cloud migrations provided by CLEARCOM ENTERPRISES LTD are governed by an agreed Master Service Level Agreement (SLA).
+                All Managed IT Support, 3CX VoIP PBX, Yeastar installations, and cloud migrations provided by {COMPANY_INFO.name} are governed by an agreed Master Service Level Agreement (SLA).
               </p>
 
               <h4 className="text-base font-bold text-slate-900 font-['Poppins']">2. Response Times & Guarantees</h4>

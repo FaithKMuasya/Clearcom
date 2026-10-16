@@ -44,7 +44,9 @@ export const COMPANY_INFO = {
   shortName: "Clearcom",
   tagline: "Effortless IT Support, like it never even happened.",
   foundedYear: 2012,
+  website: "https://www.clearcom.co.ke",
   address: "Vision Plaza, Mombasa Road, 5th Floor, Suite 35, Nairobi, Kenya",
+  addressShort: "Vision Plaza, Mombasa Rd, Nairobi",
   city: "Nairobi",
   country: "Kenya",
   phone: "+254 795 768 010",
@@ -66,6 +68,7 @@ export const COMPANY_INFO = {
     telegram: "https://t.me/clearcomke",
     tiktok: "https://tiktok.com/@clearcomltd",
   },
+  mapsUrl: "https://maps.google.com/?q=Vision+Plaza+Mombasa+Road+Nairobi",
   mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.775373859663!2d36.8502573757912!3d-1.328328635650392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f11c793ff433b%3A0xe5a14c330dfd7f02!2sVision%20Plaza%2C%20Mombasa%20Rd%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske",
 };
 

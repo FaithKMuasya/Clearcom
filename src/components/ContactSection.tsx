@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { COMPANY_INFO, SERVICES_LIST } from '../data/clearcomData.ts';
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle, AlertCircle, Sparkles, MessageSquare, Copy, Check, FileText } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { submitContactInquiry } from '../../app/actions/contact';
 
 interface ContactSectionProps {
   preselectedService?: string;
@@ -73,7 +74,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     if (!formData.phone.trim()) {
       newErrors.phone = 'Please provide a phone number so our engineers can reach you.';
     } else if (!/^[+0-9\s-]{8,20}$/.test(formData.phone)) {
-      newErrors.phone = 'Please enter a valid phone number (e.g., +254 795 768 010).';
+      newErrors.phone = `Please enter a valid phone number (e.g., ${COMPANY_INFO.phoneDisplay}).`;
     }
 
     if (!formData.message.trim()) {
@@ -96,28 +97,20 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     setSubmitError(null);
 
     try {
-      const randomSuffix = Math.floor(1000 + Math.random() * 9000);
-      const ticketId = `CLR-2026-${randomSuffix}`;
-
-      // Deliver the inquiry by email via the local API server (server.js)
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: 'contact',
-          ticket: ticketId,
-          name: formData.name,
-          company: formData.company,
-          email: formData.email,
-          phone: formData.phone,
-          service: formData.service,
-          message: formData.message,
-          website: formData.honeypot,
-        }),
+      const result = await submitContactInquiry({
+        name: formData.name,
+        company: formData.company,
+        email: formData.email,
+        phone: formData.phone,
+        service: formData.service,
+        message: formData.message,
+        website: formData.honeypot,
       });
-      if (!response.ok) {
-        throw new Error(`delivery-failed-${response.status}`);
+      if (result.ok === false) {
+        setSubmitError(result.error);
+        return;
       }
+      const ticketId = result.ticket;
 
       const nowStr = new Date().toLocaleString('en-KE', {
         dateStyle: 'medium',
@@ -164,7 +157,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
         message: '',
       }));
     } catch (err) {
-      setSubmitError('Unable to deliver message right now. Please call us directly at +254 795 768 010 or message via WhatsApp.');
+      setSubmitError(`Unable to deliver message right now. Please call us directly at ${COMPANY_INFO.phoneDisplay} or message via WhatsApp.`);
     } finally {
       setIsSubmitting(false);
     }
@@ -275,7 +268,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
             <div className="bg-white rounded-3xl p-2 shadow-sm border border-slate-200/80 overflow-hidden">
               <div className="rounded-2xl overflow-hidden h-64 w-full relative">
                 <iframe
-                  title="Clearcom Enterprises LTD Location - Vision Plaza Mombasa Road Nairobi"
+                  title={`${COMPANY_INFO.name} location`}
                   src={COMPANY_INFO.mapEmbedUrl}
                   width="100%"
                   height="100%"
@@ -288,7 +281,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               </div>
               <div className="p-3 text-center">
                 <a
-                  href="https://maps.google.com/?q=Vision+Plaza+Mombasa+Road+Nairobi"
+                  href={COMPANY_INFO.mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs font-semibold text-[#0B6BB5] hover:text-[#F26B21] transition-colors"

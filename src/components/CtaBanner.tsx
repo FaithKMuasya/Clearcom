@@ -56,7 +56,7 @@ export const CtaBanner: React.FC<CtaBannerProps> = ({ onOpenConsultation }) => {
         </div>
 
         <p className="mt-8 text-xs text-slate-400">
-          📍 Located at Vision Plaza, Mombasa Road, 5th Floor, Suite 35, Nairobi • Rapid Response Guaranteed
+          📍 Located at {COMPANY_INFO.address} • Rapid Response Guaranteed
         </p>
       </div>
     </section>

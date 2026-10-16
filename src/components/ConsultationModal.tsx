@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { X, Sparkles, CheckCircle2, Phone, Mail, Send, Calendar, MessageSquare, Copy, Check, AlertCircle } from 'lucide-react';
 import { COMPANY_INFO, SERVICES_LIST } from '../data/clearcomData.ts';
 import confetti from 'canvas-confetti';
+import { submitConsultationRequest } from '../../app/actions/contact';
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -34,25 +35,18 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
     setSubmitError(null);
 
     try {
-      const id = `CLR-AUDIT-${Math.floor(1000 + Math.random() * 9000)}`;
-
-      // Deliver the booking by email via the local API server (server.js)
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: 'consultation',
-          ticket: id,
-          name,
-          email,
-          phone,
-          service,
-          datePref,
-        }),
+      const result = await submitConsultationRequest({
+        name,
+        email,
+        phone,
+        service,
+        datePref,
       });
-      if (!response.ok) {
-        throw new Error(`delivery-failed-${response.status}`);
+      if (result.ok === false) {
+        setSubmitError(result.error);
+        return;
       }
+      const id = result.ticket;
 
       setTicketId(id);
 
@@ -81,7 +75,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
         colors: ['#F26B21', '#0B6BB5', '#10b981'],
       });
     } catch {
-      setSubmitError('Unable to send your booking right now. Please call +254 795 768 010 or message us on WhatsApp.');
+      setSubmitError(`Unable to send your booking right now. Please call ${COMPANY_INFO.phoneDisplay} or message us on WhatsApp.`);
     } finally {
       setIsSubmitting(false);
     }
