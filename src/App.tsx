@@ -162,9 +162,6 @@ export function App({ servicesPage = false, contactPage = false, aboutPage = fal
 
         {!servicesPage && !contactPage && !aboutPage && !industriesPage && !faqPage && (
           <>
-            {/* 10. About Us (Nairobi Headquarters, Vision Plaza Mombasa Rd, Mission & Values) */}
-            <AboutSection />
-
             {/* 11. Testimonials Slider (Kenyan Business Case Scenarios) */}
             <TestimonialsSection />
 
