@@ -44,7 +44,7 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
                 {service.badge}
               </span>
             )}
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-white font-['Poppins']">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-white font-heading">
               {service.title}
             </h2>
           </div>
@@ -54,7 +54,7 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
         <div className="p-6 sm:p-8 overflow-y-auto space-y-8 divide-y divide-slate-100 flex-1">
           {/* Overview */}
           <div>
-            <h3 className="text-lg font-bold text-[#08365F] font-['Poppins'] mb-3 flex items-center gap-2">
+            <h3 className="text-lg font-bold text-[#08365F] font-heading mb-3 flex items-center gap-2">
               <Zap className="w-5 h-5 text-[#F26B21]" />
               Executive Overview
             </h3>
@@ -65,7 +65,7 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
 
           {/* What's Included */}
           <div className="pt-6">
-            <h3 className="text-lg font-bold text-[#08365F] font-['Poppins'] mb-4 flex items-center gap-2">
+            <h3 className="text-lg font-bold text-[#08365F] font-heading mb-4 flex items-center gap-2">
               <CheckCircle2 className="w-5 h-5 text-emerald-600" />
               What's Included in This Service
             </h3>
@@ -83,47 +83,55 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
           </div>
 
           {/* Key Benefits */}
-          <div className="pt-6">
-            <h3 className="text-lg font-bold text-[#08365F] font-['Poppins'] mb-4 flex items-center gap-2">
-              <Shield className="w-5 h-5 text-[#0B6BB5]" />
-              Key Business Benefits
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {service.keyBenefits.map((benefit, index) => (
-                <div
-                  key={index}
-                  className="p-4 bg-blue-50/50 rounded-xl border border-blue-100 text-sm font-semibold text-[#08365F]"
-                >
-                  ⚡ {benefit}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Ideal For & Technology Partners */}
-          <div className="pt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-amber-50/60 p-5 rounded-2xl border border-amber-200/60">
-              <h4 className="text-xs font-bold text-[#F26B21] uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                <Users className="w-4 h-4" /> Ideal For
-              </h4>
-              <p className="text-sm text-slate-800 leading-relaxed font-medium">
-                {service.idealFor}
-              </p>
-            </div>
-
-            <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200/80">
-              <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 flex items-center gap-1.5">
-                <Building className="w-4 h-4" /> Powered by Certified Partners
-              </h4>
-              <div className="flex flex-wrap items-center gap-3">
-                {service.techPartners.map((partner, index) => (
-                  <div key={index} className="bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-2xs">
-                    <PartnerLogoSvg name={partner} className="h-6 max-w-[100px]" />
+          {service.keyBenefits.length > 0 && (
+            <div className="pt-6">
+              <h3 className="text-lg font-bold text-[#08365F] font-heading mb-4 flex items-center gap-2">
+                <Shield className="w-5 h-5 text-[#0B6BB5]" />
+                Key Business Benefits
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {service.keyBenefits.map((benefit, index) => (
+                  <div
+                    key={index}
+                    className="p-4 bg-blue-50/50 rounded-xl border border-blue-100 text-sm font-semibold text-[#08365F]"
+                  >
+                    ⚡ {benefit}
                   </div>
                 ))}
               </div>
             </div>
-          </div>
+          )}
+
+          {/* Ideal For & Technology Partners */}
+          {(service.idealFor || service.techPartners.length > 0) && (
+            <div className="pt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+              {service.idealFor && (
+                <div className="bg-amber-50/60 p-5 rounded-2xl border border-amber-200/60">
+                  <h4 className="text-xs font-bold text-[#F26B21] uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                    <Users className="w-4 h-4" /> Ideal For
+                  </h4>
+                  <p className="text-sm text-slate-800 leading-relaxed font-medium">
+                    {service.idealFor}
+                  </p>
+                </div>
+              )}
+
+              {service.techPartners.length > 0 && (
+                <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200/80">
+                  <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                    <Building className="w-4 h-4" /> Technologies
+                  </h4>
+                  <div className="flex flex-wrap items-center gap-3">
+                    {service.techPartners.map((partner, index) => (
+                      <div key={index} className="bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-2xs">
+                        <PartnerLogoSvg name={partner} className="h-6 max-w-[100px]" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Modal Footer with Quote CTA */}

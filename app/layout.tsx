@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { COMPANY_INFO } from "../src/data/clearcomData";
+import "../src/fonts.css";
 import "../src/index.css";
 
 const description = `${COMPANY_INFO.tagline} Managed IT services, business phone systems, cybersecurity, cloud, and networking for Kenyan businesses.`;

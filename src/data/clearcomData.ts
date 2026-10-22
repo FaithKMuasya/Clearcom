@@ -90,281 +90,132 @@ export const PARTNERS_LIST: Partner[] = [
   { name: "Logitech", tier: "Video Collaboration Partner", category: "Meeting Room Solutions", badgeColor: "#00b8fc", description: "Rally Bar, MeetUp & High-Definition Teams/Zoom Rooms" },
 ];
 
+// Service descriptions, capabilities, and images from https://www.clearcom.co.ke/services/
 export const SERVICES_LIST: ServiceDetail[] = [
   {
-    id: "managed-it",
-    slug: "managed-it-services",
-    title: "Managed IT Services",
-    badge: "Most Popular",
-    iconName: "ShieldCheck",
-    shortDesc: "Complete, proactive IT management that keeps your systems running 24/7 without costly business interruptions.",
-    fullDesc: "Eliminate unexpected IT crises with Clearcom's end-to-end Managed IT Services. We serve as your dedicated in-house IT department—providing 24/7 proactive monitoring, instant remote helpdesk, preventative maintenance, asset tracking, and on-site dispatch across Nairobi.",
-    heroImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
-    included: [
-      "24/7/365 network, server, and workstation monitoring",
-      "Dedicated Nairobi-based helpdesk with 15-minute response SLA",
-      "Automated OS and third-party software patch management",
-      "Regular preventative maintenance & hardware health diagnostics",
-      "IT asset inventory tracking and lifecycle renewal planning",
-      "Rapid on-site emergency dispatch across Nairobi & Kenya",
-      "Predictable, transparent per-seat monthly flat rate"
+    "id": "hardware-procurement",
+    "slug": "it-equipment-integration",
+    "title": "IT Equipment & Integration",
+    "iconName": "Laptop",
+    "shortDesc": "Reliable hardware and seamless integration services.",
+    "fullDesc": "Reliable hardware and seamless integration services.",
+    "heroImage": "/images/services/it-equipment-integration.jpg",
+    "included": [
+      "Supply of new and refurbished laptops, desktops, and servers",
+      "Network setup including routers, firewalls, and switches",
+      "Structured cabling and wireless access point installations",
+      "Printer and peripheral setup and management",
+      "System integration and vendor coordination"
     ],
-    keyBenefits: [
-      "Zero unpredictable IT repair bills with flat-rate support",
-      "99.98% average client system uptime",
-      "Free up your staff to focus on revenue-generating core work",
-      "Immediate access to certified senior IT engineers"
-    ],
-    idealFor: "SMEs, corporate offices, law firms, clinics, and businesses with 5 to 500+ computer users needing worry-free IT.",
-    techPartners: ["Kaseya", "Microsoft", "Dell", "HP", "Lenovo"]
+    "keyBenefits": [],
+    "idealFor": "",
+    "techPartners": []
   },
   {
-    id: "3cx-phone-systems",
-    slug: "3cx-phone-systems",
-    title: "3CX Business Phone Systems",
-    badge: "Communication Specialist",
-    iconName: "PhoneCall",
-    shortDesc: "Award-winning software VoIP PBX with iOS/Android apps, video conferencing, live chat, and deep CRM integration.",
-    fullDesc: "Transform your company's communication with 3CX—the world-renowned software PBX deployed and maintained by Clearcom's certified engineers. Cut telecom bills by up to 80% using modern SIP trunks, give remote staff mobile softphones with office extensions, and integrate WhatsApp, website live chat, and CRM calls seamlessly into one unified dashboard.",
-    heroImage: "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?auto=format&fit=crop&w=1200&q=80",
-    included: [
-      "Cloud-hosted or on-premise 3CX PBX deployment & configuration",
-      "Mobile softphone apps (iOS & Android) with push notifications",
-      "Browser web client with zero-install calling and status visibility",
-      "Built-in HD WebRTC video conferencing & screen sharing (no per-seat fee)",
-      "Website live chat and WhatsApp business integration",
-      "Custom Digital Receptionist (IVR) and ring groups",
-      "Call recording, agent whisper, barge-in, and compliance auditing",
-      "Seamless CRM integrations (Salesforce, HubSpot, Zoho, Microsoft 365)",
-      "Migration from outdated analog PABX lines to Safaricom/Airtel SIP trunks",
-      "Comprehensive staff training and ongoing SLA maintenance"
+    "id": "communication-collaboration",
+    "slug": "communication-collaboration",
+    "title": "Communication & Collaboration",
+    "iconName": "PhoneCall",
+    "shortDesc": "Empower your team with modern communication tools.",
+    "fullDesc": "Empower your team with modern communication tools.",
+    "heroImage": "/images/services/communication-collaboration.jpg",
+    "included": [
+      "VoIP phone systems using 3CX or Yeastar",
+      "Intercom and IP-based telephony for office setups",
+      "Call routing, IVR, voicemail-to-email, and call recording",
+      "Integration with Microsoft Teams and CRMs",
+      "Handset provisioning and user training"
     ],
-    keyBenefits: [
-      "Slash telecommunication costs by 50% to 80%",
-      "Work from anywhere in Kenya or abroad with your office landline number",
-      "Unlimited users per license—pay only for simultaneous call channels",
-      "Never miss a high-value customer inquiry or sales call"
-    ],
-    idealFor: "Modern enterprises, hybrid/remote teams, call centers, customer service hubs, and growing businesses wanting low call costs.",
-    techPartners: ["3CX", "Fanvil", "Microsoft"]
+    "keyBenefits": [],
+    "idealFor": "",
+    "techPartners": [
+      "3CX",
+      "Yeastar",
+      "Microsoft"
+    ]
   },
   {
-    id: "yeastar-phone-systems",
-    slug: "yeastar-phone-systems",
-    title: "Yeastar Business Phone Systems",
-    badge: "Hardware & Hybrid Leader",
-    iconName: "Headphones",
-    shortDesc: "Enterprise-grade P-Series VoIP PBX paired with rugged Fanvil desk phones, call center analytics, and hybrid resilience.",
-    fullDesc: "Yeastar P-Series PBX delivers reliable, carrier-grade unified communications engineered for modern businesses. Whether you prefer a dedicated on-premise hardware appliance for maximum autonomy or a high-availability cloud PBX, Clearcom pairs Yeastar with Fanvil IP desk phones and executive video terminals to create an unbeatable business telephony solution.",
-    heroImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
-    included: [
-      "Yeastar P-Series appliance (P550, P560, P570) or cloud PBX setup",
-      "Linkus UC mobile, desktop, and web client unified applications",
-      "Auto-provisioning for Fanvil X-Series, V-Series & H-Series hotel IP phones",
-      "Hybrid PSTN, GSM, ISDN, and SIP trunk multi-carrier gateway support",
-      "Advanced Call Center suite: real-time wallboard, SLA alerts, queue callbacks",
-      "Integrated audio conferencing, visual voicemail, and operator panel",
-      "Multi-site branch office telephone networking with free internal calls",
-      "Fanvil IP video intercoms, paging horns, and executive touch-screen consoles",
-      "Complete structured telephony cabling, rack mounting & Kenyan SLA support"
+    "id": "cloud-solutions",
+    "slug": "cloud-solutions",
+    "title": "Cloud Solutions",
+    "iconName": "Cloud",
+    "shortDesc": "Scalable and secure cloud platforms to grow your business.",
+    "fullDesc": "Scalable and secure cloud platforms to grow your business.",
+    "heroImage": "/images/services/cloud-solutions.jpg",
+    "included": [
+      "Migration of servers and files to Microsoft Azure or OneDrive",
+      "Hybrid environments for on-prem/cloud flexibility",
+      "Cloud backup for critical data and applications",
+      "Virtual desktops and remote work enablement",
+      "Ongoing support and cost optimization"
     ],
-    keyBenefits: [
-      "Rock-solid hardware reliability with zero cloud dependency if needed",
-      "Native auto-provisioning saves hours of deployment time",
-      "Rich call center performance analytics and agent metrics out-of-the-box",
-      "Seamless upgrade path from traditional PSTN/GSM lines to fiber SIP trunks"
-    ],
-    idealFor: "Offices, manufacturing facilities, hotels, hospitals, multi-branch banks, and organizations preferring dedicated appliance hardware.",
-    techPartners: ["Yeastar", "Fanvil"]
+    "keyBenefits": [],
+    "idealFor": "",
+    "techPartners": [
+      "Microsoft"
+    ]
   },
   {
-    id: "it-consulting",
-    slug: "it-consulting-support",
-    title: "IT Consulting & Strategy",
-    badge: "Executive Advisory",
-    iconName: "Compass",
-    shortDesc: "Strategic technology roadmaps, vendor management, IT infrastructure audits, and vCIO guidance to drive growth.",
-    fullDesc: "Technology should propel your business forward, not drag it down. Clearcom provides strategic IT consulting and Virtual Chief Information Officer (vCIO) services. We assess your existing IT architecture, identify security and workflow bottlenecks, design future-proof technology roadmaps, and optimize vendor contracts.",
-    heroImage: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
-    included: [
-      "Comprehensive IT infrastructure, security & compliance audits",
-      "Dedicated Virtual CIO (vCIO) strategic guidance and quarterly reviews",
-      "3- to 5-year technology roadmapping aligned with your growth goals",
-      "IT budgeting, CAPEX/OPEX cost optimization, and licensing audits",
-      "Vendor evaluation, procurement negotiation, and ISP contract review",
-      "Business continuity, disaster recovery, and risk assessment planning",
-      "Staff technology adoption frameworks and security training"
+    "id": "cybersecurity",
+    "slug": "cybersecurity-services",
+    "title": "Cybersecurity Services",
+    "iconName": "Lock",
+    "shortDesc": "Protect your business from cyber threats and data breaches.",
+    "fullDesc": "Protect your business from cyber threats and data breaches.",
+    "heroImage": "/images/services/cybersecurity-services.jpg",
+    "included": [
+      "Endpoint protection with Microsoft Defender or Sophos",
+      "Email security with anti-spam and phishing filters",
+      "Multi-Factor Authentication (MFA) enforcement",
+      "Regular vulnerability assessments and patching",
+      "Backup and disaster recovery planning"
     ],
-    keyBenefits: [
-      "Avoid costly technology procurement mistakes and over-licensing",
-      "Align IT investments directly with measurable business profitability",
-      "Gain executive-level IT leadership without executive-salary overhead",
-      "Uncover hidden security vulnerabilities before bad actors exploit them"
-    ],
-    idealFor: "Growing SMEs, executive leadership teams, non-profits, and institutions seeking strategic technology direction.",
-    techPartners: ["Microsoft", "Sophos", "Kaseya"]
+    "keyBenefits": [],
+    "idealFor": "",
+    "techPartners": [
+      "Microsoft",
+      "Sophos"
+    ]
   },
   {
-    id: "cybersecurity",
-    slug: "cybersecurity-data-protection",
-    title: "Cybersecurity & Data Protection",
-    badge: "High Threat Defense",
-    iconName: "Lock",
-    shortDesc: "Multi-layered defense with Sophos Intercept X, Bitdefender GravityZone, next-gen firewalls, and anti-phishing protection.",
-    fullDesc: "Kenyan businesses face escalating cyber threats—from sophisticated email spear-phishing and ransomware attacks to insider data leaks. Clearcom designs multi-layered, zero-trust security architectures utilizing industry leaders Sophos and Bitdefender to safeguard your confidential files, customer records, and banking credentials.",
-    heroImage: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
-    included: [
-      "Sophos Intercept X Advanced with Deep Learning & EDR/XDR",
-      "Bitdefender GravityZone Business Security Enterprise",
-      "Next-generation hardware firewalls (Sophos XGS) with deep packet inspection",
-      "Enterprise email protection: anti-spam, spoofing protection (SPF/DKIM/DMARC)",
-      "Real-time ransomware rollback and cryptographic file locking shields",
-      "Employee simulated phishing testing and security awareness training",
-      "Vulnerability assessments, network penetration tests & Kenya Data Protection compliance"
+    "id": "microsoft-365-solutions",
+    "slug": "microsoft-365-solutions",
+    "title": "Microsoft 365 Solutions",
+    "iconName": "Cloud",
+    "shortDesc": "Unlock the full power of Microsoft 365 for your business.",
+    "fullDesc": "Unlock the full power of Microsoft 365 for your business.",
+    "heroImage": "/images/services/microsoft-365-solutions.jpg",
+    "included": [
+      "Licensing, setup, and deployment of Microsoft 365 apps",
+      "Email migration to Exchange Online with zero data loss",
+      "Teams and SharePoint configuration for better collaboration",
+      "Security policies to protect your users and data",
+      "Training and onboarding to boost productivity"
     ],
-    keyBenefits: [
-      "Prevent costly ransomware extortions and catastrophic data losses",
-      "Protect your brand reputation and client confidentiality",
-      "Comply with Kenya Data Protection Act (KDPA) regulatory requirements",
-      "24/7 automated threat containment before attacks spread across your LAN"
-    ],
-    idealFor: "Financial firms, legal practices, healthcare providers, e-commerce, and any company holding sensitive customer data.",
-    techPartners: ["Sophos", "Bitdefender", "Microsoft"]
+    "keyBenefits": [],
+    "idealFor": "",
+    "techPartners": [
+      "Microsoft"
+    ]
   },
   {
-    id: "backup-recovery",
-    slug: "backup-disaster-recovery",
-    title: "Backup & Disaster Recovery",
-    badge: "Business Continuity",
-    iconName: "Database",
-    shortDesc: "Automated Acronis & Kaseya cloud backups, instant server virtualization, and guaranteed 15-minute recovery point.",
-    fullDesc: "Hardware fails, fires occur, and ransomware strikes without warning. Can your business survive losing its financial databases or ERP systems? Clearcom's Backup & Disaster Recovery solutions provide immutable, automated backups stored securely both on-site and in encrypted tier-IV cloud repositories.",
-    heroImage: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1200&q=80",
-    included: [
-      "Acronis Cyber Protect Cloud automated hybrid backup (Local + Cloud)",
-      "Kaseya Unified Backup for physical servers, virtual machines & endpoints",
-      "Immutable, ransomware-proof cloud storage with 256-bit AES encryption",
-      "Microsoft 365 cloud-to-cloud backup (Exchange, SharePoint, OneDrive, Teams)",
-      "Disaster recovery virtualization: spin up servers in the cloud within 15 minutes",
-      "Automated scheduled disaster recovery testing & verification reports",
-      "Dedicated Kenyan disaster recovery engineers on standby"
+    "id": "managed-it",
+    "slug": "managed-it-support",
+    "title": "Managed IT Support",
+    "iconName": "ShieldCheck",
+    "shortDesc": "Reliable support to keep your systems running smoothly.",
+    "fullDesc": "Reliable support to keep your systems running smoothly.",
+    "heroImage": "/images/services/managed-it-support.jpg",
+    "included": [
+      "Proactive maintenance and monitoring to prevent downtime",
+      "Unlimited helpdesk and remote support for fast issue resolution",
+      "Onsite visits when you need hands-on assistance",
+      "IT asset management and regular health checks",
+      "Monthly reporting and insights for continuous improvement"
     ],
-    keyBenefits: [
-      "Near-zero data loss with aggressive Recovery Point Objectives (RPO)",
-      "Resume operations in minutes instead of weeks after catastrophic events",
-      "Immunity from ransomware demands thanks to immutable restore points",
-      "Peace of mind knowing backups are tested and verified continuously"
-    ],
-    idealFor: "Enterprises with mission-critical ERPs, accounting systems, legal archives, and medical records.",
-    techPartners: ["Acronis", "Kaseya", "Microsoft"]
-  },
-  {
-    id: "cloud-microsoft-365",
-    slug: "cloud-microsoft-365-solutions",
-    title: "Cloud & Microsoft 365 Solutions",
-    badge: "Certified CSP",
-    iconName: "Cloud",
-    shortDesc: "Official Microsoft 365 licensing, Azure cloud migration, SharePoint document management, and Entra ID security.",
-    fullDesc: "Accelerate your team's productivity with modern cloud workspaces. As a certified Microsoft Cloud Solution Provider (CSP), Clearcom handles official licensing, seamless email migration from cPanel/Google Workspace, SharePoint intranet structuring, and Microsoft Azure cloud server deployments.",
-    heroImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
-    included: [
-      "Microsoft 365 Business Basic, Standard & Premium licensing & renewal",
-      "Zero-downtime email migration to Microsoft Exchange Online",
-      "SharePoint Online document management architecture & access permissions",
-      "OneDrive for Business configuration with automatic desktop backup",
-      "Microsoft Teams deployment for voice, video, and internal collaboration",
-      "Microsoft Entra ID (Azure AD) Single Sign-On and Multi-Factor Auth (MFA)",
-      "Microsoft Azure cloud server migrations (Windows Server, Linux, SQL)"
-    ],
-    keyBenefits: [
-      "Empower employees to collaborate securely from any device or location",
-      "Local Kenyan invoicing with transparent pricing and flexible renewals",
-      "Eliminate noisy on-premise server power bills and maintenance hassles",
-      "Enterprise-grade email deliverability and anti-spam protection"
-    ],
-    idealFor: "Businesses moving from legacy webmail or physical on-premise file servers to modern collaborative cloud workspaces.",
-    techPartners: ["Microsoft"]
-  },
-  {
-    id: "networking-wifi",
-    slug: "networking-wifi-solutions",
-    title: "Networking & Wi-Fi Infrastructure",
-    badge: "High Performance",
-    iconName: "Wifi",
-    shortDesc: "High-density Ubiquiti & TP-Link Omada Wi-Fi 6/7, Cat6A structured cabling, enterprise switching, and multi-branch VPNs.",
-    fullDesc: "A slow, dropped-connection network cripples daily business productivity. Clearcom designs and implements rock-solid wired and wireless networks built for high throughput, seamless roaming, and ironclad security using TP-Link Omada and Ubiquiti UniFi enterprise systems.",
-    heroImage: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80",
-    included: [
-      "Enterprise Cat6 / Cat6A structured cabling with certified testing & labeling",
-      "Ubiquiti UniFi & TP-Link Omada high-density Wi-Fi 6/7 access points",
-      "Managed Gigabit, 2.5G & 10G PoE+ network switches and server racks",
-      "Dual-WAN failover router setups (seamless Safaricom + Liquid/Zuku switching)",
-      "Secure site-to-site IPsec / WireGuard VPNs connecting branch offices",
-      "VLAN segregation for corporate, VoIP, CCTV, and guest Wi-Fi networks",
-      "Professional Wi-Fi RF heatmapping and coverage optimization surveys"
-    ],
-    keyBenefits: [
-      "Zero dead zones with seamless, intelligent Wi-Fi roaming across your office",
-      "Uninterrupted internet uptime via automatic dual-ISP failover",
-      "Bandwidth prioritization ensuring VoIP and video calls never stutter",
-      "Clean, orderly server rack cabling that makes troubleshooting effortless"
-    ],
-    idealFor: "Offices, warehouses, schools, hotels, residential estates, and multi-story commercial buildings.",
-    techPartners: ["Ubiquiti", "TP-Link"]
-  },
-  {
-    id: "cctv-security",
-    slug: "cctv-security-systems",
-    title: "CCTV & Physical Security Systems",
-    badge: "Surveillance & Access",
-    iconName: "Video",
-    shortDesc: "Hikvision AI ColorVu surveillance, high-definition NVR recording, biometric access control, and mobile remote monitoring.",
-    fullDesc: "Protect your physical premises, assets, and personnel with intelligent security systems. Clearcom installs commercial Hikvision CCTV with 24/7 full-color night vision, AI-driven vehicle and human intrusion detection, smart NVR recording, and biometric door access systems with integrated time-and-attendance.",
-    heroImage: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=1200&q=80",
-    included: [
-      "Hikvision ColorVu HD & 4K IP cameras with 24/7 vivid color night vision",
-      "Network Video Recorders (NVR) with high-endurance surveillance hard drives",
-      "Secure mobile app live viewing & instant push motion alert configuration",
-      "AI human and vehicle classification (eliminates false insect/wind alarms)",
-      "Biometric fingerprint, facial recognition & RFID card door access control",
-      "Automated employee time-and-attendance software integration with payroll",
-      "Surge protection, power backup (UPS), and tidy structured conduit cabling"
-    ],
-    keyBenefits: [
-      "Monitor your premises live from anywhere in the world on your smartphone",
-      "Deter theft, vandalism, and unauthorized intrusion with visible smart cameras",
-      "Automate accurate payroll attendance and eliminate buddy-punching",
-      "High-definition video evidence accepted for legal and insurance claims"
-    ],
-    idealFor: "Offices, retail stores, manufacturing warehouses, educational institutions, and secure commercial facilities.",
-    techPartners: ["Hikvision"]
-  },
-  {
-    id: "hardware-procurement",
-    slug: "hardware-procurement-integration",
-    title: "Hardware Procurement & Integration",
-    badge: "Enterprise Supply",
-    iconName: "Laptop",
-    shortDesc: "Official Dell, HP, Lenovo enterprise laptops, desktops, servers, and Logitech video conferencing solutions with warranty.",
-    fullDesc: "Stop buying grey-market consumer hardware that breaks down after a few months. Clearcom procures authentic, enterprise-grade business laptops, high-performance desktops, rackmount servers, and conference room systems directly from certified distributors of Dell, HP, Lenovo, and Logitech.",
-    heroImage: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=1200&q=80",
-    included: [
-      "Business-grade laptops & desktops (Dell Latitude/OptiPlex, HP EliteBook, Lenovo ThinkPad)",
-      "Enterprise server supply & configuration (Dell PowerEdge, HP ProLiant)",
-      "Logitech Rally, MeetUp & Tap conference room video systems",
-      "Complete pre-delivery setup: OS hardening, custom imaging & software installation",
-      "Genuine manufacturer warranty support and local parts replacement",
-      "Network printers, multi-function scanners, and enterprise UPS battery backups",
-      "Eco-friendly decommissioning and secure certified data sanitization of old PCs"
-    ],
-    keyBenefits: [
-      "100% genuine equipment backed by official local Kenyan manufacturer warranties",
-      "Turnkey deployment: computers arrive fully configured and ready for user login",
-      "Save money with volume corporate pricing and flexible payment terms",
-      "Standardize your company hardware fleet for simplified IT administration"
-    ],
-    idealFor: "Companies onboarding staff, setting up modern conference boardrooms, or refreshing aging computing infrastructure.",
-    techPartners: ["Dell", "HP", "Lenovo", "Logitech"]
+    "keyBenefits": [],
+    "idealFor": "",
+    "techPartners": []
   }
 ];
 

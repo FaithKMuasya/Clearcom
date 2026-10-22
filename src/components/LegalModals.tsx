@@ -20,7 +20,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
               {type === 'privacy' ? <Shield className="w-6 h-6" /> : <FileText className="w-6 h-6" />}
             </div>
             <div>
-              <h3 className="text-xl font-bold text-[#08365F] font-['Poppins']">
+              <h3 className="text-xl font-bold text-[#08365F] font-heading">
                 {type === 'privacy' ? 'Data Privacy Policy' : 'Terms of Service & SLA Agreements'}
               </h3>
               <p className="text-xs text-slate-500">
@@ -41,44 +41,44 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
         <div className="p-6 sm:p-8 overflow-y-auto text-sm text-slate-700 space-y-4 leading-relaxed">
           {type === 'privacy' ? (
             <>
-              <h4 className="text-base font-bold text-slate-900 font-['Poppins']">1. Commitment to Kenya Data Protection Act (KDPA)</h4>
+              <h4 className="text-base font-bold text-slate-900 font-heading">1. Commitment to Kenya Data Protection Act (KDPA)</h4>
               <p>
                 {COMPANY_INFO.name}, headquartered at {COMPANY_INFO.address}, is dedicated to upholding the highest standards of data security and confidentiality in compliance with the Data Protection Act, 2019 of the Republic of Kenya.
               </p>
 
-              <h4 className="text-base font-bold text-slate-900 font-['Poppins']">2. Information Collection</h4>
+              <h4 className="text-base font-bold text-slate-900 font-heading">2. Information Collection</h4>
               <p>
                 When you request a quote, consultation, or technical audit on clearcom.co.ke, we collect basic business contact details: company name, representative name, business email, and telephone number. We do not sell, rent, or trade your contact information to third-party marketing entities.
               </p>
 
-              <h4 className="text-base font-bold text-slate-900 font-['Poppins']">3. Technical & Telemetry Safeguards</h4>
+              <h4 className="text-base font-bold text-slate-900 font-heading">3. Technical & Telemetry Safeguards</h4>
               <p>
                 Our remote monitoring agents (Kaseya, Sophos, 3CX, Yeastar) collect solely technical health telemetries (CPU load, network throughput, disk health, patch levels) required to maintain your SLA and prevent system outages.
               </p>
 
-              <h4 className="text-base font-bold text-slate-900 font-['Poppins']">4. Contact Our Data Protection Officer</h4>
+              <h4 className="text-base font-bold text-slate-900 font-heading">4. Contact Our Data Protection Officer</h4>
               <p>
                 For data privacy requests or erasure inquiries, please email our security officer at <a href={`mailto:${COMPANY_INFO.email}`} className="text-[#0B6BB5] underline">{COMPANY_INFO.email}</a> or telephone {COMPANY_INFO.phoneDisplay}.
               </p>
             </>
           ) : (
             <>
-              <h4 className="text-base font-bold text-slate-900 font-['Poppins']">1. Service Scope & Managed IT Agreements</h4>
+              <h4 className="text-base font-bold text-slate-900 font-heading">1. Service Scope & Managed IT Agreements</h4>
               <p>
                 All Managed IT Support, 3CX VoIP PBX, Yeastar installations, and cloud migrations provided by {COMPANY_INFO.name} are governed by an agreed Master Service Level Agreement (SLA).
               </p>
 
-              <h4 className="text-base font-bold text-slate-900 font-['Poppins']">2. Response Times & Guarantees</h4>
+              <h4 className="text-base font-bold text-slate-900 font-heading">2. Response Times & Guarantees</h4>
               <p>
                 We maintain an aggressive response commitment: critical severity (P1) incidents are triaged within 15 minutes of ticket initiation during contracted SLA coverage. Urgent on-site dispatch is provided throughout Nairobi and adjacent commercial zones.
               </p>
 
-              <h4 className="text-base font-bold text-slate-900 font-['Poppins']">3. Genuine Hardware & Warranties</h4>
+              <h4 className="text-base font-bold text-slate-900 font-heading">3. Genuine Hardware & Warranties</h4>
               <p>
                 All hardware supplied (Dell, HP, Lenovo, Logitech, Hikvision, Fanvil) carries official manufacturer warranty. In the rare event of equipment defect, Clearcom coordinates warranty replacements directly with authorized Kenyan service centers.
               </p>
 
-              <h4 className="text-base font-bold text-slate-900 font-['Poppins']">4. Jurisdiction</h4>
+              <h4 className="text-base font-bold text-slate-900 font-heading">4. Jurisdiction</h4>
               <p>
                 These terms are governed in accordance with the laws of Kenya.
               </p>

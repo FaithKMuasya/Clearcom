@@ -19,14 +19,11 @@ export const TestimonialsSection: React.FC = () => {
     <section className="py-20 lg:py-24 bg-gradient-to-b from-white via-slate-50 to-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-[#F26B21] text-xs font-bold uppercase tracking-wider mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#08365F] font-heading">
             Client Success Stories
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#08365F] font-['Poppins']">
-            Trusted by Kenyan Leaders
           </h2>
           <p className="mt-4 text-slate-600 text-base sm:text-lg">
-            Hear from operations directors, managing partners, and practice heads who rely on Clearcom every day.
+            Hear from Kenyan businesses that rely on Clearcom every day.
           </p>
         </div>
 
@@ -60,7 +57,7 @@ export const TestimonialsSection: React.FC = () => {
                 className="w-14 h-14 rounded-full object-cover border-2 border-[#0B6BB5]"
               />
               <div>
-                <h4 className="text-base font-bold text-[#08365F] font-['Poppins']">
+                <h4 className="text-base font-bold text-[#08365F] font-heading">
                   {current.name}
                 </h4>
                 <p className="text-xs text-slate-500">

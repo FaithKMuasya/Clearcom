@@ -148,7 +148,7 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Column 2: Services Quick Links */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider font-['Poppins']">
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider font-heading">
               Core IT Services
             </h4>
             <ul className="space-y-2 text-xs">
@@ -167,7 +167,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onNavigate('services')}
                   className="text-orange-400 font-bold hover:underline"
                 >
-                  View all 10 services →
+                  View all {SERVICES_LIST.length} services →
                 </button>
               </li>
             </ul>
@@ -175,7 +175,7 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Column 3: Telephony & Navigation */}
           <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider font-['Poppins']">
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider font-heading">
               Quick Links
             </h4>
             <ul className="space-y-2 text-xs">
@@ -187,16 +187,6 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button onClick={() => onNavigate('about')} className="hover:text-orange-400 transition-colors">
                   About Us
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('telephony-compare')} className="hover:text-orange-400 transition-colors">
-                  3CX vs Yeastar Guide
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('calculator')} className="hover:text-orange-400 transition-colors">
-                  Cost Estimator
                 </button>
               </li>
               <li>
@@ -224,7 +214,7 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Column 4: Contact & Location */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider font-['Poppins']">
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider font-heading">
               Nairobi Office
             </h4>
             <div className="space-y-2.5 text-xs text-slate-300">

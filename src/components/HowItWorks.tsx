@@ -14,7 +14,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ onStartConsultation }) =
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-[#F26B21] text-xs font-bold uppercase tracking-wider mb-4">
             Proven Implementation Methodology
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#08365F] font-['Poppins']">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#08365F] font-heading">
             How It Works: 4 Simple Steps to Seamless IT
           </h2>
           <p className="mt-4 text-slate-600 text-base sm:text-lg">
@@ -42,7 +42,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ onStartConsultation }) =
               <span className="text-xs font-bold uppercase tracking-wider text-orange-300">
                 Smooth Onboarding Promise
               </span>
-              <h3 className="text-2xl sm:text-3xl font-extrabold font-['Poppins']">
+              <h3 className="text-2xl sm:text-3xl font-extrabold font-heading">
                 We Handle the Heavy Lifting Outside Business Hours
               </h3>
               <p className="text-slate-200 text-sm leading-relaxed">
@@ -72,7 +72,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ onStartConsultation }) =
               <div>
                 {/* Step Number Badge */}
                 <div className="flex items-center justify-between mb-6">
-                  <span className="text-3xl font-black font-['Poppins'] text-[#F26B21] group-hover:scale-110 transition-transform">
+                  <span className="text-3xl font-black font-heading text-[#F26B21] group-hover:scale-110 transition-transform">
                     {step.step}
                   </span>
                   <div className="w-8 h-8 rounded-full bg-blue-50 text-[#0B6BB5] flex items-center justify-center font-bold text-xs">
@@ -80,7 +80,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ onStartConsultation }) =
                   </div>
                 </div>
 
-                <h3 className="text-lg font-bold text-[#08365F] font-['Poppins'] mb-3 group-hover:text-[#0B6BB5] transition-colors">
+                <h3 className="text-lg font-bold text-[#08365F] font-heading mb-3 group-hover:text-[#0B6BB5] transition-colors">
                   {step.title}
                 </h3>
 

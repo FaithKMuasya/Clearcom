@@ -1,6 +1,6 @@
 import React from 'react';
 import { COMPARISON_3CX_VS_YEASTAR } from '../data/clearcomData.ts';
-import { Check, Sparkles, Phone, Headphones, ArrowRight, Laptop, Smartphone } from 'lucide-react';
+import { Check, Phone, Headphones, ArrowRight, Laptop, Smartphone } from 'lucide-react';
 
 interface PhoneComparisonTableProps {
   onSelectPlan?: (serviceId: string) => void;
@@ -16,10 +16,9 @@ export const PhoneComparisonTable: React.FC<PhoneComparisonTableProps> = ({
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto mb-10">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-200 text-[#F26B21] text-xs font-bold uppercase tracking-wider mb-3">
-          <Sparkles className="w-3.5 h-3.5" />
           Telephony Decision Guide
         </div>
-        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#08365F] font-['Poppins']">
+        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#08365F] font-heading">
           {COMPARISON_3CX_VS_YEASTAR.title}
         </h3>
         <p className="mt-2 text-slate-600 text-sm sm:text-base">
@@ -46,7 +45,7 @@ export const PhoneComparisonTable: React.FC<PhoneComparisonTableProps> = ({
             </div>
           </div>
           <div className="p-5">
-            <h4 className="font-bold text-slate-900 text-base font-['Poppins'] mb-1">
+            <h4 className="font-bold text-slate-900 text-base font-heading mb-1">
               3CX: Work From Anywhere With Your Office Landline
             </h4>
             <p className="text-xs text-slate-600 leading-relaxed">
@@ -72,7 +71,7 @@ export const PhoneComparisonTable: React.FC<PhoneComparisonTableProps> = ({
             </div>
           </div>
           <div className="p-5">
-            <h4 className="font-bold text-slate-900 text-base font-['Poppins'] mb-1">
+            <h4 className="font-bold text-slate-900 text-base font-heading mb-1">
               Yeastar P-Series: Carrier-Grade Hardware & Fanvil IP Phones
             </h4>
             <p className="text-xs text-slate-600 leading-relaxed">
@@ -152,10 +151,10 @@ export const PhoneComparisonTable: React.FC<PhoneComparisonTableProps> = ({
                   </button>
                   {onSelectPlan && (
                     <button
-                      onClick={() => onSelectPlan('3cx-phone-systems')}
+                      onClick={() => onSelectPlan('communication-collaboration')}
                       className="text-xs text-[#00a8e8] font-semibold hover:underline text-center cursor-pointer"
                     >
-                      View 3CX Full Specs →
+                      View Communication Services →
                     </button>
                   )}
                 </div>
@@ -172,10 +171,10 @@ export const PhoneComparisonTable: React.FC<PhoneComparisonTableProps> = ({
                   </button>
                   {onSelectPlan && (
                     <button
-                      onClick={() => onSelectPlan('yeastar-phone-systems')}
+                      onClick={() => onSelectPlan('communication-collaboration')}
                       className="text-xs text-[#0288d1] font-semibold hover:underline text-center cursor-pointer"
                     >
-                      View Yeastar Full Specs →
+                      View Communication Services →
                     </button>
                   )}
                 </div>

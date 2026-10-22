@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PARTNERS_LIST, Partner } from '../data/clearcomData.ts';
 import { PartnerLogoSvg } from './PartnerLogosSvg.tsx';
-import { CheckCircle2, ExternalLink, X, Award, Pause, Play, Grid, Layers } from 'lucide-react';
+import { CheckCircle2, ExternalLink, X } from 'lucide-react';
 
 interface PartnersCarouselProps {
   onSelectService?: (serviceId: string) => void;
@@ -9,28 +9,26 @@ interface PartnersCarouselProps {
 
 export const PartnersCarousel: React.FC<PartnersCarouselProps> = ({ onSelectService }) => {
   const [selectedPartner, setSelectedPartner] = useState<Partner | null>(null);
-  const [isPaused, setIsPaused] = useState<boolean>(false);
-  const [viewMode, setViewMode] = useState<'carousel' | 'grid'>('carousel');
 
   const getRelevantServiceId = (partnerName: string): string => {
     switch (partnerName) {
       case '3CX':
-        return '3cx-phone-systems';
+        return 'communication-collaboration';
       case 'Yeastar':
       case 'Fanvil':
-        return 'yeastar-phone-systems';
+        return 'communication-collaboration';
       case 'Sophos':
       case 'Bitdefender':
         return 'cybersecurity';
       case 'Acronis':
-        return 'backup-recovery';
+        return 'cloud-solutions';
       case 'Microsoft':
-        return 'cloud-microsoft-365';
+        return 'microsoft-365-solutions';
       case 'Ubiquiti':
       case 'TP-Link':
-        return 'networking-wifi';
+        return 'hardware-procurement';
       case 'Hikvision':
-        return 'cctv-security';
+        return 'hardware-procurement';
       case 'Dell':
       case 'HP':
       case 'Lenovo':
@@ -45,15 +43,9 @@ export const PartnersCarousel: React.FC<PartnersCarouselProps> = ({ onSelectServ
   return (
     <section id="partners" className="py-16 sm:py-20 bg-gradient-to-b from-white via-slate-50 to-white overflow-hidden border-y border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
-        {/* Section Tag */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/60 text-[#0B6BB5] text-xs font-semibold uppercase tracking-wider mb-4">
-          <Award className="w-3.5 h-3.5 text-[#F26B21]" />
-          Authorized Ecosystem & Certifications
-        </div>
-
         {/* Heading: Blue with Orange Underline as shown in screenshot */}
         <div className="inline-block relative">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B6BB5] font-['Poppins'] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B6BB5] font-heading tracking-tight">
             Professional Partners
           </h2>
           {/* Orange Accent Underline */}
@@ -63,103 +55,38 @@ export const PartnersCarousel: React.FC<PartnersCarouselProps> = ({ onSelectServ
         <p className="mt-4 text-slate-600 max-w-2xl mx-auto text-sm sm:text-base">
           Direct certifications and alliances with the world's leading IT, telecom, security, and cloud vendors to guarantee genuine hardware, licensing, and local warranty across Kenya.
         </p>
-
-        {/* Carousel Controls (Speed, Pause, Grid Toggle) */}
-        <div className="mt-6 flex items-center justify-center gap-3">
-          <button
-            onClick={() => setIsPaused(!isPaused)}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-200 hover:border-slate-300 shadow-2xs hover:bg-slate-50 transition-colors cursor-pointer"
-            title={isPaused ? "Resume auto-scrolling" : "Pause auto-scrolling to read"}
-          >
-            {isPaused ? <Play className="w-3.5 h-3.5 text-emerald-600" /> : <Pause className="w-3.5 h-3.5 text-amber-600" />}
-            <span>{isPaused ? 'Resume Scroll' : 'Pause Scroll'}</span>
-          </button>
-
-          <button
-            onClick={() => setViewMode(viewMode === 'carousel' ? 'grid' : 'carousel')}
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold border transition-colors cursor-pointer shadow-2xs ${
-              viewMode === 'grid'
-                ? 'bg-[#0B6BB5] text-white border-[#0B6BB5]'
-                : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
-            }`}
-          >
-            {viewMode === 'grid' ? <Layers className="w-3.5 h-3.5" /> : <Grid className="w-3.5 h-3.5" />}
-            <span>{viewMode === 'grid' ? 'Switch to Carousel' : 'View All 15 as Grid'}</span>
-          </button>
-        </div>
       </div>
 
-      {viewMode === 'carousel' ? (
-        /* Slow, Readable Infinite Marquee */
-        <div className="relative w-full overflow-hidden py-4">
-          {/* Subtle gradient edge masks */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
+      {/* Slow, Readable Infinite Marquee */}
+      <div className="relative w-full overflow-hidden py-4">
+        {/* Subtle gradient edge masks */}
+        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
 
-          {/* Marquee Track: Duplicated list for seamless looping, slower speed, full brand colors */}
-          <div
-            className={`animate-marquee flex items-center gap-6 sm:gap-8 px-4 ${
-              isPaused ? '[animation-play-state:paused]' : ''
-            }`}
-          >
-            {[...PARTNERS_LIST, ...PARTNERS_LIST].map((partner, index) => (
-              <button
-                key={`${partner.name}-${index}`}
-                onClick={() => setSelectedPartner(partner)}
-                type="button"
-                className="group flex-shrink-0 bg-white rounded-2xl border border-slate-200/90 hover:border-[#0B6BB5] shadow-xs hover:shadow-xl transition-all duration-300 px-6 py-4 flex items-center gap-4 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#0B6BB5] hover:-translate-y-0.5"
-                title={`Click to view ${partner.name} partnership details`}
-              >
-                {/* Partner Logo in FULL VIBRANT BRAND COLORS as in the screenshot */}
-                <div className="flex items-center justify-center min-w-[130px] sm:min-w-[150px] h-11 px-2 group-hover:scale-105 transition-transform duration-200">
-                  <PartnerLogoSvg name={partner.name} />
-                </div>
+        {/* Marquee Track: Duplicated list for seamless looping, slower speed, full brand colors */}
+        <div className="animate-marquee flex items-center gap-6 sm:gap-8 px-4 hover:[animation-play-state:paused] focus-within:[animation-play-state:paused] motion-reduce:animate-none">
+          {[...PARTNERS_LIST, ...PARTNERS_LIST].map((partner, index) => (
+            <button
+              key={`${partner.name}-${index}`}
+              onClick={() => setSelectedPartner(partner)}
+              type="button"
+              className="group flex-shrink-0 bg-white rounded-2xl border border-slate-200/90 hover:border-[#0B6BB5] shadow-xs hover:shadow-xl transition-all duration-300 px-6 py-4 flex items-center gap-4 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#0B6BB5] hover:-translate-y-0.5"
+              title={`Click to view ${partner.name} partnership details`}
+            >
+              {/* Partner Logo in FULL VIBRANT BRAND COLORS as in the screenshot */}
+              <div className="flex items-center justify-center min-w-[130px] sm:min-w-[150px] h-11 px-2 group-hover:scale-105 transition-transform duration-200">
+                <PartnerLogoSvg name={partner.name} />
+              </div>
 
-                <div className="hidden sm:block border-l border-slate-200 pl-4 py-0.5">
-                  <span className="block text-[11px] font-bold text-[#0B6BB5] uppercase tracking-wide group-hover:text-[#F26B21] transition-colors">
-                    {partner.tier}
-                  </span>
-                  <span className="block text-xs text-slate-500 font-medium">
-                    {partner.category}
-                  </span>
-                </div>
-              </button>
-            ))}
-          </div>
-        </div>
-      ) : (
-        /* Static Grid View displaying all 15 partners in their exact brand colors */
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            {PARTNERS_LIST.map((partner) => (
-              <button
-                key={partner.name}
-                onClick={() => setSelectedPartner(partner)}
-                className="bg-white rounded-2xl p-5 border border-slate-200 hover:border-[#0B6BB5] shadow-xs hover:shadow-lg transition-all duration-200 flex flex-col items-center justify-center text-center group cursor-pointer"
-              >
-                <div className="h-12 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
-                  <PartnerLogoSvg name={partner.name} />
-                </div>
-                <span className="text-xs font-bold text-[#08365F] group-hover:text-[#F26B21] transition-colors">
-                  {partner.name}
-                </span>
-                <span className="text-[10px] text-slate-500 font-medium mt-0.5">
+              <div className="hidden sm:block border-l border-slate-200 pl-4 py-0.5">
+                <span className="block text-[11px] font-bold text-[#0B6BB5] uppercase tracking-wide group-hover:text-[#F26B21] transition-colors">
                   {partner.tier}
                 </span>
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Category Pills Bar */}
-      <div className="max-w-6xl mx-auto px-4 mt-8">
-        <div className="flex flex-wrap items-center justify-center gap-2 text-xs">
-          <span className="text-slate-400 font-semibold mr-1">All Certified Domains:</span>
-          {['VoIP Phone Systems (3CX / Yeastar / Fanvil)', 'Endpoint & Cloud Security (Sophos / Bitdefender)', 'Enterprise Hardware (Dell / HP / Lenovo)', 'Productivity & Azure (Microsoft 365)', 'Enterprise Networking (Ubiquiti / TP-Link)', 'Smart Video Surveillance (Hikvision)'].map((tag, i) => (
-            <span key={i} className="px-3 py-1 rounded-full bg-slate-100/80 text-slate-700 border border-slate-200/60 font-medium">
-              {tag}
-            </span>
+                <span className="block text-xs text-slate-500 font-medium">
+                  {partner.category}
+                </span>
+              </div>
+            </button>
           ))}
         </div>
       </div>
@@ -184,7 +111,7 @@ export const PartnersCarousel: React.FC<PartnersCarouselProps> = ({ onSelectServ
                 <span className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-blue-50 text-[#0B6BB5] mb-1">
                   {selectedPartner.tier}
                 </span>
-                <h3 className="text-xl font-bold text-slate-900 font-['Poppins']">
+                <h3 className="text-xl font-bold text-slate-900 font-heading">
                   {selectedPartner.name}
                 </h3>
               </div>

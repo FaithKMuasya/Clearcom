@@ -32,7 +32,7 @@ export const CookieBanner: React.FC = () => {
             <Shield className="w-5 h-5" />
           </div>
           <div className="flex-1">
-            <h4 className="text-sm font-bold text-slate-900 font-['Poppins']">
+            <h4 className="text-sm font-bold text-slate-900 font-heading">
               Cookie & Data Privacy Notice
             </h4>
             <p className="text-xs text-slate-600 mt-1 leading-relaxed">

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { COMPANY_INFO, SERVICES_LIST } from '../data/clearcomData.ts';
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle, AlertCircle, Sparkles, MessageSquare, Copy, Check, FileText } from 'lucide-react';
+import { COMPANY_INFO } from '../data/clearcomData.ts';
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle, AlertCircle, MessageSquare, Copy, Check, FileText } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { submitContactInquiry } from '../../app/actions/contact';
 
 interface ContactSectionProps {
+  headingAs?: 'h1' | 'h2';
   preselectedService?: string;
-  prefilledNotes?: string;
 }
 
 interface SubmittedInquiry {
@@ -22,8 +22,8 @@ interface SubmittedInquiry {
 }
 
 export const ContactSection: React.FC<ContactSectionProps> = ({
+  headingAs: Heading = 'h2',
   preselectedService,
-  prefilledNotes,
 }) => {
   const [formData, setFormData] = useState({
     name: '',
@@ -48,15 +48,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
       setFormData((prev) => ({ ...prev, service: preselectedService }));
     }
   }, [preselectedService]);
-
-  useEffect(() => {
-    if (prefilledNotes) {
-      setFormData((prev) => ({
-        ...prev,
-        message: prev.message ? `${prev.message}\n\n[Custom Scope]: ${prefilledNotes}` : `[Custom Scope]: ${prefilledNotes}`,
-      }));
-    }
-  }, [prefilledNotes]);
 
   const validate = (): boolean => {
     const newErrors: Record<string, string> = {};
@@ -176,13 +167,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-[#F26B21] text-xs font-bold uppercase tracking-wider mb-4">
-            <Sparkles className="w-3.5 h-3.5" />
-            Connect With Our Engineering Team
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#08365F] font-['Poppins']">
+          <Heading className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#08365F] font-heading">
             Get a Free Consultation & Quote
-          </h2>
+          </Heading>
           <p className="mt-4 text-slate-600 text-base sm:text-lg">
             Schedule a no-obligation IT audit, 3CX/Yeastar VoIP demonstration, or cybersecurity appraisal for your organization.
           </p>
@@ -192,7 +179,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           {/* Company Details & Google Map Embed */}
           <div className="lg:col-span-5 space-y-6">
             <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/80">
-              <h3 className="text-xl font-bold text-[#08365F] font-['Poppins'] mb-6">
+              <h3 className="text-xl font-bold text-[#08365F] font-heading mb-6">
                 Clearcom Headquarters
               </h3>
 
@@ -295,26 +282,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           {/* Fully Functional Inquiry & Consultation Form */}
           <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-slate-200/80 relative">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-              <h3 className="text-2xl font-bold text-[#08365F] font-['Poppins']">
+              <h3 className="text-2xl font-bold text-[#08365F] font-heading">
                 Send an Inquiry or Request a Quote
               </h3>
-              <button
-                type="button"
-                onClick={() => {
-                  try {
-                    const stored = JSON.parse(localStorage.getItem('clearcom_inquiries') || '[]');
-                    setShowHistory(true);
-                    setHistoryList(stored);
-                  } catch (e) {
-                    setShowHistory(true);
-                  }
-                }}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#0B6BB5] text-xs font-bold transition-colors cursor-pointer self-start sm:self-auto"
-                title="View inquiries stored on this device"
-              >
-                <FileText className="w-3.5 h-3.5" />
-                <span>View Logged Inquiries</span>
-              </button>
             </div>
             <p className="text-slate-600 text-sm mb-8">
               Fill in your details below and an IT systems consultant will get in touch within 2 business hours.
@@ -328,7 +298,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     <CheckCircle className="w-7 h-7" />
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold text-emerald-900 font-['Poppins']">
+                    <h4 className="text-xl font-bold text-emerald-900 font-heading">
                       Inquiry Logged Successfully!
                     </h4>
                     <p className="text-xs text-emerald-700">
@@ -497,26 +467,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   </div>
                 </div>
 
-                {/* Service Dropdown */}
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                    Service of Interest <span className="text-red-500">*</span>
-                  </label>
-                  <select
-                    value={formData.service}
-                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:border-[#0B6BB5] focus:ring-blue-100 bg-white"
-                  >
-                    {SERVICES_LIST.map((srv) => (
-                      <option key={srv.id} value={srv.title}>
-                        {srv.title}
-                      </option>
-                    ))}
-                    <option value="3CX vs Yeastar VoIP Comparison">3CX vs Yeastar VoIP Comparison</option>
-                    <option value="Custom Complete Office Infrastructure">Custom Complete Office Infrastructure</option>
-                    <option value="Free Comprehensive IT Audit">Free Comprehensive IT Audit</option>
-                  </select>
-                </div>
 
                 {/* Message */}
                 <div>
@@ -577,7 +527,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   <FileText className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-bold text-[#08365F] font-['Poppins']">
+                  <h4 className="text-lg font-bold text-[#08365F] font-heading">
                     Logged Inquiries & Quotes
                   </h4>
                   <p className="text-xs text-slate-500">
