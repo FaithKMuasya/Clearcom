@@ -7,7 +7,6 @@ import { HeroSection } from "./components/HeroSection.tsx";
 import { ServicesSection } from "./components/ServicesSection.tsx";
 import { IndustrySolutions } from "./components/IndustrySolutions.tsx";
 import { PartnersCarousel } from "./components/PartnersCarousel.tsx";
-import { TestimonialsSection } from "./components/TestimonialsSection.tsx";
 import { FaqSection } from "./components/FaqSection.tsx";
 import { CtaBanner } from "./components/CtaBanner.tsx";
 import { ContactSection } from "./components/ContactSection.tsx";
@@ -159,14 +158,6 @@ export function App({ servicesPage = false, contactPage = false, aboutPage = fal
           onSelectService={(service) => setSelectedService(service)}
           onRequestQuote={handleRequestQuote}
         />}
-
-        {!servicesPage && !contactPage && !aboutPage && !industriesPage && !faqPage && (
-          <>
-            {/* 11. Testimonials Slider (Kenyan Business Case Scenarios) */}
-            <TestimonialsSection />
-
-          </>
-        )}
 
         {/* 13. Final Call to Action Banner */}
         {!contactPage && !faqPage && !industriesPage && <CtaBanner
