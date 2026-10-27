@@ -68,26 +68,31 @@ export const COMPANY_INFO = {
     telegram: "https://t.me/clearcomke",
     tiktok: "https://tiktok.com/@clearcomltd",
   },
+  aboutParagraph:
+    "Clearcom Enterprises Ltd is a Nairobi-based ICT solutions provider dedicated to helping businesses leverage technology for growth, efficiency, and resilience. With more than 10 years of combined industry experience, we specialize in providing secure, cost-effective, and innovative IT solutions tailored to the needs of small and mid-sized businesses across Africa. We bridge the gap between technology investments and measurable business growth. Our approach is strategic, customer-centric, and focused on empowering organizations to thrive in today’s dynamic digital landscape.",
+  taglineExtended:
+    "Clearcom Enterprises LTD provides end-to-end IT services, from equipment and cloud to security and support, so your technology just works.",
   mapsUrl: "https://maps.google.com/?q=Vision+Plaza+Mombasa+Road+Nairobi",
   mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.775373859663!2d36.8502573757912!3d-1.328328635650392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f11c793ff433b%3A0xe5a14c330dfd7f02!2sVision%20Plaza%2C%20Mombasa%20Rd%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske",
 };
 
 export const PARTNERS_LIST: Partner[] = [
-  { name: "3CX", tier: "Advanced Certified Partner", category: "VoIP & Communications", badgeColor: "#00a8e8", description: "Software PBX, WebRTC Video, Softphone & CRM Integration" },
-  { name: "Yeastar", tier: "Certified Solution Partner", category: "Business Phone Systems", badgeColor: "#0288d1", description: "P-Series Hybrid & Cloud Unified Communications" },
-  { name: "Fanvil", tier: "Official Hardware Partner", category: "IP Phones & Intercoms", badgeColor: "#e64a19", description: "Enterprise HD Desk Phones, Video Doorbells & Headsets" },
-  { name: "Microsoft", tier: "Cloud Solution Provider (CSP)", category: "Cloud & Productivity", badgeColor: "#00a4ef", description: "Microsoft 365, Azure Cloud, Teams & Defender" },
-  { name: "Sophos", tier: "Authorized Security Partner", category: "Cybersecurity & Firewall", badgeColor: "#0070d2", description: "Intercept X Endpoint Protection & Next-Gen XGS Firewalls" },
-  { name: "Bitdefender", tier: "Enterprise Partner", category: "Cybersecurity", badgeColor: "#ed1c24", description: "GravityZone Cloud Security, Ransomware & EDR Protection" },
-  { name: "Acronis", tier: "Certified Cloud Partner", category: "Backup & Recovery", badgeColor: "#002d62", description: "Cyber Protect Cloud, Disaster Recovery & Ransomware Shield" },
-  { name: "Kaseya", tier: "MSP Technology Partner", category: "IT Management & RMM", badgeColor: "#174291", description: "Enterprise Remote Monitoring, Patch Automation & IT Assets" },
-  { name: "Hikvision", tier: "Certified Systems Integrator", category: "CCTV & Physical Security", badgeColor: "#d32f2f", description: "Smart AI IP Cameras, NVR Systems & Biometric Access Control" },
   { name: "Ubiquiti", tier: "Enterprise Partner", category: "Networking & Wi-Fi", badgeColor: "#0559C9", description: "UniFi High-Density Wi-Fi 6/7, Switches & Gateways" },
-  { name: "TP-Link", tier: "Omada Certified Partner", category: "Networking Solutions", badgeColor: "#00a0e9", description: "Omada SDN Cloud Controllers, Business Routers & PoE" },
-  { name: "Dell", tier: "Authorized Partner", category: "Hardware & Servers", badgeColor: "#007db8", description: "PowerEdge Enterprise Servers, Latitude & OptiPlex" },
-  { name: "HP", tier: "Business Solutions Partner", category: "Hardware & Laptops", badgeColor: "#0096d6", description: "ProLiant Servers, EliteBook Workstations & Printers" },
-  { name: "Lenovo", tier: "Enterprise Solutions Partner", category: "Hardware & ThinkPad", badgeColor: "#e2231a", description: "ThinkSystem Servers, ThinkPad Business Fleet & Desktops" },
+  { name: "TP-Link", tier: "Certified Partner", category: "Networking Solutions", badgeColor: "#00a0e9", description: "Omada SDN Cloud Controllers, Business Routers & PoE" },
   { name: "Logitech", tier: "Video Collaboration Partner", category: "Meeting Room Solutions", badgeColor: "#00b8fc", description: "Rally Bar, MeetUp & High-Definition Teams/Zoom Rooms" },
+  { name: "HP", tier: "Business Partner", category: "Hardware & Laptops", badgeColor: "#0096d6", description: "ProLiant Servers, EliteBook Workstations & Printers" },
+  { name: "Hikvision", tier: "Certified Partner", category: "CCTV & Physical Security", badgeColor: "#d32f2f", description: "Smart AI IP Cameras, NVR Systems & Biometric Access Control" },
+  { name: "Fanvil", tier: "Certified Hardware Partner", category: "IP Phones & Intercoms", badgeColor: "#e64a19", description: "Enterprise HD Desk Phones, Video Doorbells & Headsets" },
+  { name: "VMware", tier: "Certified Partner", category: "Virtualization & Cloud", badgeColor: "#4b5563", description: "vSphere Virtualization, Cloud Infrastructure & Hybrid Data Centers" },
+  { name: "Yeastar", tier: "Certified Partner", category: "Business Phone Systems", badgeColor: "#0288d1", description: "P-Series Hybrid & Cloud Unified Communications" },
+  { name: "Microsoft", tier: "Cloud Solution Provider (CSP)", category: "Cloud & Productivity", badgeColor: "#00a4ef", description: "Microsoft 365, Azure Cloud, Teams & Defender" },
+  { name: "3CX", tier: "Certified Partner", category: "VoIP & Communications", badgeColor: "#00a8e8", description: "Software PBX, WebRTC Video, Softphone & CRM Integration" },
+  { name: "ESET", tier: "Certified Partner", category: "Cybersecurity & Antivirus", badgeColor: "#00828a", description: "Proactive Endpoint Protection, Mobile Security & Antivirus" },
+  { name: "Sophos", tier: "Certified Partner", category: "Cybersecurity & Firewall", badgeColor: "#0070d2", description: "Intercept X Endpoint Protection & Next-Gen XGS Firewalls" },
+  { name: "Bitdefender", tier: "Cybersecurity Partner", category: "Endpoint & EDR Security", badgeColor: "#ed1c24", description: "GravityZone Cloud Security, Ransomware & EDR Protection" },
+  { name: "Lenovo", tier: "Business Partner (Classic)", category: "Hardware & ThinkPad", badgeColor: "#e2231a", description: "ThinkSystem Servers, ThinkPad Business Fleet & Desktops" },
+  { name: "Yealink", tier: "Certified Partner", category: "VoIP Phones & Conferencing", badgeColor: "#00828a", description: "Enterprise IP Telephony, Video Bars & Unified Communications" },
+  { name: "Acronis", tier: "Certified Partner", category: "Backup & Recovery", badgeColor: "#002d62", description: "Cyber Protect Cloud, Disaster Recovery & Ransomware Shield" },
 ];
 
 // Service descriptions, capabilities, and images from https://www.clearcom.co.ke/services/

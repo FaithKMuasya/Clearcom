@@ -23,13 +23,8 @@ export const AboutSection: React.FC<{ headingAs?: 'h1' | 'h2' }> = ({ headingAs:
             </Heading>
 
             <p className="mt-6 text-slate-600 text-base sm:text-lg leading-relaxed">
-              Founded over a decade ago in Nairobi, <span className="font-bold text-slate-900">CLEARCOM ENTERPRISES LTD</span> was established with a singular, resolute mission: to liberate Kenyan businesses from the endless frustration of IT disruptions, erratic phone lines, and unpredictable repair invoices.
+              Clearcom Enterprises Ltd is a Nairobi-based ICT solutions provider dedicated to helping businesses leverage technology for growth, efficiency, and resilience. With more than 10 years of combined industry experience, we specialize in providing secure, cost-effective, and innovative IT solutions tailored to the needs of small and mid-sized businesses across Africa. We bridge the gap between technology investments and measurable business growth. Our approach is strategic, customer-centric, and focused on empowering organizations to thrive in today’s dynamic digital landscape.
             </p>
-
-            <p className="mt-4 text-slate-600 text-sm sm:text-base leading-relaxed">
-              Our brand tagline—<span className="font-bold text-[#F26B21] italic">"Effortless IT Support, like it never even happened"</span>—defines our everyday operating standard. When systems operate seamlessly in the background, your team can focus on servicing your clients and driving profitability.
-            </p>
-
           </div>
         </div>
       </div>

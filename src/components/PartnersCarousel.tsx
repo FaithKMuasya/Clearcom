@@ -13,14 +13,16 @@ export const PartnersCarousel: React.FC<PartnersCarouselProps> = ({ onSelectServ
   const getRelevantServiceId = (partnerName: string): string => {
     switch (partnerName) {
       case '3CX':
-        return 'communication-collaboration';
       case 'Yeastar':
       case 'Fanvil':
+      case 'Yealink':
         return 'communication-collaboration';
       case 'Sophos':
       case 'Bitdefender':
+      case 'ESET':
         return 'cybersecurity';
       case 'Acronis':
+      case 'VMware':
         return 'cloud-solutions';
       case 'Microsoft':
         return 'microsoft-365-solutions';
@@ -70,21 +72,12 @@ export const PartnersCarousel: React.FC<PartnersCarouselProps> = ({ onSelectServ
               key={`${partner.name}-${index}`}
               onClick={() => setSelectedPartner(partner)}
               type="button"
-              className="group flex-shrink-0 bg-white rounded-2xl border border-slate-200/90 hover:border-[#0B6BB5] shadow-xs hover:shadow-xl transition-all duration-300 px-6 py-4 flex items-center gap-4 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#0B6BB5] hover:-translate-y-0.5"
+              className="group flex-shrink-0 bg-white rounded-2xl border border-slate-200/90 hover:border-[#0B6BB5] shadow-xs hover:shadow-xl transition-all duration-300 px-6 py-4 flex items-center justify-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#0B6BB5] hover:-translate-y-0.5"
               title={`Click to view ${partner.name} partnership details`}
             >
-              {/* Partner Logo in FULL VIBRANT BRAND COLORS as in the screenshot */}
-              <div className="flex items-center justify-center min-w-[130px] sm:min-w-[150px] h-11 px-2 group-hover:scale-105 transition-transform duration-200">
+              {/* Partner Logo */}
+              <div className="flex items-center justify-center min-w-[130px] sm:min-w-[150px] h-12 px-2 group-hover:scale-105 transition-transform duration-200">
                 <PartnerLogoSvg name={partner.name} />
-              </div>
-
-              <div className="hidden sm:block border-l border-slate-200 pl-4 py-0.5">
-                <span className="block text-[11px] font-bold text-[#0B6BB5] uppercase tracking-wide group-hover:text-[#F26B21] transition-colors">
-                  {partner.tier}
-                </span>
-                <span className="block text-xs text-slate-500 font-medium">
-                  {partner.category}
-                </span>
               </div>
             </button>
           ))}
