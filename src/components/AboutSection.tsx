@@ -19,7 +19,7 @@ export const AboutSection: React.FC<{ headingAs?: 'h1' | 'h2' }> = ({ headingAs:
           {/* Company Story */}
           <div className="lg:col-span-6">
             <Heading className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#08365F] font-heading leading-tight">
-              Your Trusted Technology Department in Kenya
+              Who We Are
             </Heading>
 
             <p className="mt-6 text-slate-600 text-base sm:text-lg leading-relaxed">
